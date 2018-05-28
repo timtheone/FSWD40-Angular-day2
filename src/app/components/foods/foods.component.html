@@ -1,0 +1,35 @@
+<h2 class="text-center">Food Items</h2>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Category</th>
+        <th colspan="2">Vitamin</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let food of foods">
+        <td>{{ food.name }}</td>
+        <td>{{ food.category }}</td>
+        <td>{{ food.vitamin }}</td>
+        <td class="text-right"><button (click)="changeState($event, food)" class="btn btn-info">More</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="moreState">
+    <div class="row">
+      <div class="col-lg-6">
+        <div *ngFor="let food of foods">
+          <div *ngIf="foodItem.id == food.id">
+            <p>Category: {{food.category}} </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <button class="btn btn-info" (click)="moreState = false ">close</button>
+      </div>
+    </div>
+  </div>
